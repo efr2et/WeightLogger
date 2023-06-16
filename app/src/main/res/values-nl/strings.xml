@@ -100,6 +100,8 @@
   <string name="pref_gender">Geslacht</string>
   <string name="pref_age">Leeftijd</string>
   <string name="pref_age_summary">Kies je leeftijd.</string>
+  <string name="pref_height">Hoogte</string>
+  <string name="pref_height_summary">Kies je lengte.</string>
   <string name="pref_unit">Gewicht eenheden</string>
   <string name="pref_muscle_mass_unit">Spiermassa eenheden</string>
   <string name="pref_muscle_mass_unit_mass">Gewicht (kg / lb)</string>

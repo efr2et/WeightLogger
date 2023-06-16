@@ -70,6 +70,7 @@ public class WeightLoggerActivity extends AppCompatActivity implements Permissio
   final int EXPORT_FIT = 1;
   final int EXPORT_CSV = 2;
   final int EXPORT_GARMIN = 3;
+  final int EXPORT_AMAZFIT = 4;
 
   int exportToPerform = EXPORT_NONE;
   PermissionHelper permissionHelper = new PermissionHelper();
@@ -218,7 +219,7 @@ public class WeightLoggerActivity extends AppCompatActivity implements Permissio
   }
   
   private void export(){
-    final CharSequence[] items = {"FIT", "CSV", "Garmin Connect ©", "Google FIT"};
+    final CharSequence[] items = {"FIT", "CSV", "Garmin Connect ©", "Google FIT", "Notify for Amazfit"};
 
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle(R.string.export);
@@ -236,6 +237,9 @@ public class WeightLoggerActivity extends AppCompatActivity implements Permissio
             break;
           case 3:
             GoogleFit.getInstance(WeightLoggerActivity.this).sendData();
+            break;
+          case 4:
+            exportFileWithPermission(EXPORT_AMAZFIT);
             break;
           default:
             break;
@@ -329,6 +333,10 @@ public class WeightLoggerActivity extends AppCompatActivity implements Permissio
             Measurement.setAllAsExported(WeightLoggerActivity.this);
 
           // CSV
+          } else if (type == EXPORT_AMAZFIT) {
+            filename = Export.buildAmazfitFile(WeightLoggerActivity.this, measurements);
+            mime = "text/csv";
+            icon = R.drawable.ic_stat_notify_csv;
           } else {
             filename = Export.buildCsvFile(WeightLoggerActivity.this, measurements);
             mime = "text/csv";

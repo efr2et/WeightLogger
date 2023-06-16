@@ -100,6 +100,8 @@
   <string name="pref_gender">性別</string>
   <string name="pref_age">年齢</string>
   <string name="pref_age_summary">あなたの年齢を選んでください。</string>
+  <string name="pref_height">Height</string>
+  <string name="pref_height_summary">Choose your height.</string>
   <string name="pref_unit">重量単位</string>
   <string name="pref_unit_kg">kg</string>
   <string name="pref_unit_lb">ポンド</string>

@@ -101,6 +101,8 @@
   <string name="pref_gender">Gender</string>
   <string name="pref_age">Age</string>
   <string name="pref_age_summary">Choose your age.</string>
+  <string name="pref_height">Height</string>
+  <string name="pref_height_summary">Choose your height.</string>
   <string name="pref_unit">Weight unit</string>
   <string name="pref_unit_kg">kg</string>
   <string name="pref_unit_lb">lb</string>

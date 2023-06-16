@@ -55,7 +55,7 @@ public class Measurement {
   private static short MUSCULAR_MASS_UNIT = 1;
   private static short GENDER = 1;
   private static short AGE = 20;
-  
+  private static float HEIGHT = 1.700f;
   private static final float KG_IN_LB = 2.20462262f;
   private static final int BODY_FAT_MATRIX[][][] = {{{8,19,25},{11,21,28},{13,25,30}},{{21,33,39},{23,34,40},{24,36,42}}};
   
@@ -122,7 +122,7 @@ public class Measurement {
     this(context, null, weight, body_fat, body_water, muscle_mass, daily_calorie_intake, physique_rating, visceral_fat_rating, bone_mass, metabolic_age, recorded_at, exported, convert_to_lb, muscle_mass_in_percent);
   }
   // Getters & setters
-  
+
   public Integer getId() {
     return id;
   }
@@ -130,7 +130,9 @@ public class Measurement {
   public void setId(Integer id) {
     this.id = id;
   }
-  
+
+  public Float getHeight() { return HEIGHT;  }
+
   public Float getWeight() {
     return weight;
   }
@@ -544,5 +546,6 @@ public class Measurement {
     MUSCULAR_MASS_UNIT = Short.parseShort(preferences.getString("muscle_mass_unit", "1"));
     GENDER = Short.parseShort(preferences.getString("gender", "1"));
     AGE    = Short.parseShort(preferences.getString("age", "20"));
+    HEIGHT = Math.round(Float.parseFloat(preferences.getString("height", "1.700")) * 1000.0f) / 1000.0f;
   }
 }

@@ -139,7 +139,38 @@ public class Export {
 
     return filename;
   }
-  
+
+  public static String buildAmazfitFile(Context context, LinkedList<Measurement> measurements) throws StorageNotMountedException, IOException {
+    checkExternalStorage();
+
+    createDirIfNotExists(context);
+    SimpleDateFormat fileNameFormater = new SimpleDateFormat("yyyyMMdd");
+
+    String filename = "ws_notify_amazfit_" + fileNameFormater.format(new Date()) + ".csv";
+
+    FileWriter fCsv = new FileWriter(new File(path(context), filename));
+    fCsv.append("timestamp;weight;height;bmi;fatRate;bodyWaterRate;boneMass;metabolism;muscleRate;visceralFat;impedance\n");
+
+    for (Measurement measurement : measurements) {
+      fCsv.append(Math.round(measurement.getRecordedAt().getTimeInMillis()/1000f) + ";");
+      fCsv.append(measurement.getConvertedWeight() + ";");
+      fCsv.append(measurement.getHeight() + ";");
+      fCsv.append(Math.round((measurement.getConvertedWeight()/(measurement.getHeight() * measurement.getHeight())) * 10.0f) / 10.0f + ";");
+      fCsv.append(measurement.getBodyFat() + ";");
+      fCsv.append(measurement.getBodyWater() + ";");
+      fCsv.append(measurement.getConvertedBoneMass() + ";");
+      fCsv.append(measurement.getDailyCalorieIntake() + ";");
+      fCsv.append(measurement.getConvertedMuscleMass() + ";");
+      fCsv.append(measurement.getVisceralFatRating() + ";");
+      fCsv.append("0\n");
+    }
+
+    fCsv.flush();
+    fCsv.close();
+
+    return filename;
+  }
+
   public static String database(Context context) throws StorageNotMountedException, IOException {
     checkExternalStorage();
     

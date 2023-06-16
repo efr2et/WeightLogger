@@ -98,6 +98,8 @@
   <string name="pref_gender">Sexe</string>
   <string name="pref_age">Edat</string>
   <string name="pref_age_summary">Trieu la vostra edat.</string>
+  <string name="pref_height">Alçada</string>
+  <string name="pref_height_summary">" Tria la teva alçada."</string>
   <string name="pref_unit">Unitat de pes</string>
   <string name="pref_muscle_mass_unit">Unitat de massa muscular</string>
   <string name="pref_muscle_mass_unit_mass">Pes (kg / lb)</string>

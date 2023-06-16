@@ -101,6 +101,8 @@
   <string name="pref_gender">Пол</string>
   <string name="pref_age">Возвраст</string>
   <string name="pref_age_summary">Укажите ваш возвраст.</string>
+  <string name="pref_height">Рост</string>
+  <string name="pref_height_summary">Укажите ваш рост.</string>
   <string name="pref_unit">Единицы измерения веса</string>
   <string name="pref_unit_kg">кг</string>
   <string name="pref_unit_lb">фт</string>

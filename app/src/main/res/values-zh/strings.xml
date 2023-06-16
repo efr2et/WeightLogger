@@ -98,6 +98,8 @@
   <string name="pref_gender">性别</string>
   <string name="pref_age">年龄</string>
   <string name="pref_age_summary">输入你的年龄</string>
+  <string name="pref_height">" 高度"</string>
+  <string name="pref_height_summary">選擇你的身高.</string>
   <string name="pref_unit">重量单位</string>
   <string name="pref_unit_kg">千克(kg)</string>
   <string name="pref_unit_lb">磅(lb)</string>

@@ -101,6 +101,8 @@
   <string name="pref_gender">Стать</string>
   <string name="pref_age">Вік</string>
   <string name="pref_age_summary">Вкажіть свій вік.</string>
+  <string name="pref_height">Зріст</string>
+  <string name="pref_height_summary">Вкажіть свій зріст.</string>
   <string name="pref_unit">Одиниця виміру ваги</string>
   <string name="pref_unit_kg">кг</string>
   <string name="pref_unit_lb">фт</string>

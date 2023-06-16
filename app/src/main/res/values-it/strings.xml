@@ -99,6 +99,8 @@
   <string name="pref_gender">Sesso</string>
   <string name="pref_age">Età</string>
   <string name="pref_age_summary">Selezionate la vostra età.</string>
+  <string name="pref_height">Height</string>
+  <string name="pref_height_summary">Choose your height.</string>
   <string name="pref_unit">Unità di peso</string>
   <string name="pref_muscle_mass_unit">Unità massa muscolare</string>
   <string name="pref_muscle_mass_unit_mass">Massa (kg / lb)</string>

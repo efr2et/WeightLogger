@@ -100,6 +100,8 @@
   <string name="pref_gender">מין</string>
   <string name="pref_age">גיל</string>
   <string name="pref_age_summary">בחר גיל</string>
+  <string name="pref_height">Height</string>
+  <string name="pref_height_summary">Choose your height.</string>
   <string name="pref_unit">יחידות משקל</string>
   <string name="pref_unit_kg">ק"ג</string>
   <string name="pref_unit_lb">ליברה</string>

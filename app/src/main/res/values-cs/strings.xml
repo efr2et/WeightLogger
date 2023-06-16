@@ -101,6 +101,8 @@
   <string name="pref_gender">Pohlaví</string>
   <string name="pref_age">Věk</string>
   <string name="pref_age_summary">Vyberte svůj věk.</string>
+  <string name="pref_height">" Výška"</string>
+  <string name="pref_height_summary">Vyberte si výšku.</string>
   <string name="pref_unit">Váhová jednotka</string>
   <string name="pref_unit_kg">kg</string>
   <string name="pref_unit_lb">lb</string>

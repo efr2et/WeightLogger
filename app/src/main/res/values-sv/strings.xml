@@ -100,6 +100,8 @@
   <string name="pref_gender">Kön</string>
   <string name="pref_age">Ålder</string>
   <string name="pref_age_summary">Välj din ålder.</string>
+  <string name="pref_height">Height</string>
+  <string name="pref_height_summary">Choose your height.</string>
   <string name="pref_unit">Vikt enhet</string>
   <string name="pref_muscle_mass_unit">Muskelmassa enhet</string>
   <string name="pref_muscle_mass_unit_mass">Enhet (kg / lb)</string>

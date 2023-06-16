@@ -101,6 +101,8 @@
   <string name="pref_gender">Płeć</string>
   <string name="pref_age">Wiek</string>
   <string name="pref_age_summary">Podaj swój wiek.</string>
+  <string name="pref_height">Height</string>
+  <string name="pref_height_summary">Choose your height.</string>
   <string name="pref_unit">Jednostka wagi</string>
   <string name="pref_muscle_mass_unit">Masa tkanki mięśniowej podawana</string>
   <string name="pref_muscle_mass_unit_mass">Wagowo (kg / lb)</string>

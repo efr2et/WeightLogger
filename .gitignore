@@ -54,3 +54,5 @@ native/
 /native/
 daemon/
 /daemon/
+tmp/
+/tmp/
