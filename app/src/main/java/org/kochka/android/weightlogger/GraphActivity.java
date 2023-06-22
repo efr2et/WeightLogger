@@ -93,6 +93,10 @@ public class GraphActivity extends AppCompatActivity {
         actionBar.setSubtitle(R.string.weight);
         logo.setImageResource(R.drawable.ic_weight);
         break;
+      case R.id.item_graph_bmi:
+        actionBar.setSubtitle(R.string.bmi);
+        logo.setImageResource(R.drawable.ic_bmi);
+        break;
       case R.id.item_graph_body_fat:
         actionBar.setSubtitle(R.string.body_fat);
         logo.setImageResource(R.drawable.ic_body_fat);
@@ -120,6 +124,10 @@ public class GraphActivity extends AppCompatActivity {
       switch (item_id) {
         case R.id.item_graph_weight:
           data.add(new DataPoint(dt, measurement.getConvertedWeight()));
+          break;
+        case R.id.item_graph_bmi:
+          if (measurement.getBMI() != null)
+            data.add(new DataPoint(dt, measurement.getBMI()));
           break;
         case R.id.item_graph_body_fat:
           if (measurement.getBodyFat() != null)

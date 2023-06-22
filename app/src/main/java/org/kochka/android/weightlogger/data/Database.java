@@ -54,7 +54,7 @@ public class Database extends SQLiteOpenHelper {
     db.execSQL("CREATE TABLE measurements (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
              + "weight REAL NOT NULL, body_fat REAL, body_water REAL, muscle_mass REAL,"
              + "daily_calorie_intake INTEGER, physique_rating INTEGER, visceral_fat_rating REAL,"
-             + "bone_mass REAL, metabolic_age INTEGER, recorded_at INTEGER, exported INTEGER NOT NULL DEFAULT 0);"
+             + "bone_mass REAL, metabolic_age INTEGER, recorded_at INTEGER, exported INTEGER NOT NULL DEFAULT 0, bmi REAL);"
              + "CREATE INDEX idx_recorded_at on measurements (recorded_at ASC);");
   }
  

@@ -50,6 +50,7 @@ public class Measurement {
   private static final byte METABOLIC_AGE       = 9;
   private static final byte RECORDED_AT         = 10;
   private static final byte EXPORTED            = 11;
+  private static final byte BMI                 = 12;
 
   private static String UNIT = "kg";
   private static short MUSCULAR_MASS_UNIT = 1;
@@ -71,6 +72,7 @@ public class Measurement {
   private Short metabolic_age;
   private GregorianCalendar recorded_at = new GregorianCalendar();
   private boolean exported;
+  private Float bmi;
   
   private boolean convert_to_lb = false;
   private boolean muscle_mass_in_percent = false;
@@ -89,7 +91,7 @@ public class Measurement {
   }
   
   public Measurement(Context context, Integer id, Float weight, Float body_fat, Float body_water, Float muscle_mass, Short daily_calorie_intake,
-                     Short physique_rating, Float visceral_fat_rating, Float bone_mass, Short metabolic_age, Long recorded_at, boolean exported) {
+                     Short physique_rating, Float visceral_fat_rating, Float bone_mass, Short metabolic_age, Long recorded_at, boolean exported, Float bmi) {
     this(context);
     setId(id);
     setWeight(weight);
@@ -103,23 +105,24 @@ public class Measurement {
     setMetabolicAge(metabolic_age);
     setRecordedAt(recorded_at);
     setExported(exported);
+    setBMI(bmi);
   }
   
   public Measurement(Context context, Integer id, Float weight, Float body_fat, Float body_water, Float muscle_mass, Short daily_calorie_intake,
-      Short physique_rating, Float visceral_fat_rating, Float bone_mass, Short metabolic_age, Long recorded_at, boolean exported, boolean convert_to_lb, boolean muscle_mass_in_percent) {
-    this(context, id, weight, body_fat, body_water, muscle_mass, daily_calorie_intake, physique_rating, visceral_fat_rating, bone_mass, metabolic_age, recorded_at, exported);
+      Short physique_rating, Float visceral_fat_rating, Float bone_mass, Short metabolic_age, Long recorded_at, boolean exported, Float bmi, boolean convert_to_lb, boolean muscle_mass_in_percent) {
+    this(context, id, weight, body_fat, body_water, muscle_mass, daily_calorie_intake, physique_rating, visceral_fat_rating, bone_mass, metabolic_age, recorded_at, exported, bmi);
     this.convert_to_lb = convert_to_lb;
     this.muscle_mass_in_percent = muscle_mass_in_percent;
   }
   
   public Measurement(Context context, Float weight, Float body_fat, Float body_water, Float muscle_mass, Short daily_calorie_intake,
-                     Short physique_rating, Float visceral_fat_rating, Float bone_mass, Short metabolic_age, Long recorded_at, boolean exported) {
-    this(context, null, weight, body_fat, body_water, muscle_mass, daily_calorie_intake, physique_rating, visceral_fat_rating, bone_mass, metabolic_age, recorded_at, exported);
+                     Short physique_rating, Float visceral_fat_rating, Float bone_mass, Short metabolic_age, Long recorded_at, boolean exported, Float bmi) {
+    this(context, null, weight, body_fat, body_water, muscle_mass, daily_calorie_intake, physique_rating, visceral_fat_rating, bone_mass, metabolic_age, recorded_at, exported, bmi);
   }
    
   public Measurement(Context context, Float weight, Float body_fat, Float body_water, Float muscle_mass, Short daily_calorie_intake,
-      Short physique_rating, Float visceral_fat_rating, Float bone_mass, Short metabolic_age, Long recorded_at, boolean exported, boolean convert_to_lb, boolean muscle_mass_in_percent) {
-    this(context, null, weight, body_fat, body_water, muscle_mass, daily_calorie_intake, physique_rating, visceral_fat_rating, bone_mass, metabolic_age, recorded_at, exported, convert_to_lb, muscle_mass_in_percent);
+      Short physique_rating, Float visceral_fat_rating, Float bone_mass, Short metabolic_age, Long recorded_at, boolean exported, Float bmi, boolean convert_to_lb, boolean muscle_mass_in_percent) {
+    this(context, null, weight, body_fat, body_water, muscle_mass, daily_calorie_intake, physique_rating, visceral_fat_rating, bone_mass, metabolic_age, recorded_at, exported, bmi, convert_to_lb, muscle_mass_in_percent);
   }
   // Getters & setters
 
@@ -349,7 +352,24 @@ public class Measurement {
   public void setExported(boolean exported) {
     this.exported = exported;
   }
-  
+
+  public void setBMI(Float bmi) { this.bmi = bmi; }
+
+  public Float getBMI() { return bmi; }
+
+  public String getBMIInfo() {
+    //check BodyFatInfo
+    if (bmi < 19.0f)
+      return context.getString(R.string.bmi_underweight);
+    else if(bmi >= 19.0f &&  bmi < 25.0f)
+      return context.getString(R.string.bmi_normal);
+    else if(bmi >= 25.0f && bmi < 30.0f)
+      return context.getString(R.string.bmi_overweight);
+    else
+      return context.getString(R.string.bmi_obese);
+  }
+
+
   private Float convertToUnit(Float value, boolean get) {
     if (value != null) {
       if (convert_to_lb) {
@@ -412,13 +432,15 @@ public class Measurement {
     values.put("metabolic_age", metabolic_age);
     values.put("recorded_at", recorded_at.getTimeInMillis());
     values.put("exported", exported ? 1 : 0);
+    values.put("bmi", bmi);
     return values;
   }
   
   public String toString(){
     SimpleDateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd");
     return "ID : " + id 
-         + "\nWeight : " + weight 
+         + "\nWeight : " + weight
+         + "\nBMI : " + bmi
          + "\nBody Fat : " + body_fat 
          + "\nBody water : " + body_water
          + "\nMuscle mass : " + muscle_mass 
@@ -536,6 +558,7 @@ public class Measurement {
                (cursor.isNull(METABOLIC_AGE)) ? null : cursor.getShort(METABOLIC_AGE), 
                cursor.getLong(RECORDED_AT), 
                cursor.getInt(EXPORTED) != 0,
+               (cursor.isNull(BMI)) ? null : cursor.getFloat(BMI),
                UNIT.equals("lb"),
                MUSCULAR_MASS_UNIT == 2);
   }

@@ -155,7 +155,7 @@ public class Export {
       fCsv.append(Math.round(measurement.getRecordedAt().getTimeInMillis()/1000f) + ";");
       fCsv.append(measurement.getConvertedWeight() + ";");
       fCsv.append(measurement.getHeight() + ";");
-      fCsv.append(Math.round((measurement.getConvertedWeight()/(measurement.getHeight() * measurement.getHeight())) * 10.0f) / 10.0f + ";");
+      fCsv.append(measurement.getBMI() + ";");
       fCsv.append(measurement.getBodyFat() + ";");
       fCsv.append(measurement.getBodyWater() + ";");
       fCsv.append(measurement.getConvertedBoneMass() + ";");

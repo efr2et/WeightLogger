@@ -233,7 +233,8 @@ public class PreferencesFragment extends PreferenceFragment implements Preferenc
                   (2 + (int)(Math.random() * 50)/10.0f),
                   (short)(20 + (int)(Math.random() * 410)/10),
                   cal.getTimeInMillis(),
-                  false).save();
+                  false,
+                  (16 + (int)(Math.random() * 150)/10.0f)).save();
           cal.add(Calendar.DATE, 1);
         }
 

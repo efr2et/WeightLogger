@@ -54,6 +54,7 @@ public class EditMeasurementActivity extends AppCompatActivity {
   boolean visceral_fat_rating_required;
   boolean bone_mass_required;
   boolean metabolic_age_required;
+  boolean bmi_required;
     
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public class EditMeasurementActivity extends AppCompatActivity {
       visceral_fat_rating_required  = preferences.getBoolean("visceral_fat_rating", true);
       bone_mass_required            = preferences.getBoolean("bone_mass", true);
       metabolic_age_required        = preferences.getBoolean("metabolic_age", true);
+      bmi_required        = preferences.getBoolean("bmi", true);
       findViewById(R.id.exported_row).setVisibility(View.GONE);
 
       if (preferences.getBoolean("preload", true) && Measurement.getCount(this) > 0) {
@@ -115,6 +117,7 @@ public class EditMeasurementActivity extends AppCompatActivity {
       visceral_fat_rating_required  = (measurement.getVisceralFatRating() != null);
       bone_mass_required            = (measurement.getBoneMass() != null);
       metabolic_age_required        = (measurement.getMetabolicAge() != null);
+      bmi_required                  = (measurement.getBMI() != null);
     }
     
     loadFields();
@@ -183,6 +186,7 @@ public class EditMeasurementActivity extends AppCompatActivity {
     if (!visceral_fat_rating_required)  findViewById(R.id.visceral_fat_rating_row).setVisibility(View.GONE);
     if (!bone_mass_required)            findViewById(R.id.bone_mass_row).setVisibility(View.GONE);
     if (!metabolic_age_required)        findViewById(R.id.metabolic_age_row).setVisibility(View.GONE);
+    if (!bmi_required)                  findViewById(R.id.bmi_row).setVisibility(View.GONE);
   }
   
   private void preload() {
@@ -195,7 +199,8 @@ public class EditMeasurementActivity extends AppCompatActivity {
     if (physique_rating_required)      measurement.setPhysiqueRating(m.getPhysiqueRating());
     if (visceral_fat_rating_required)  measurement.setVisceralFatRating(m.getVisceralFatRating());
     if (bone_mass_required)            measurement.setBoneMass(m.getBoneMass());
-    if (metabolic_age_required)        measurement.setMetabolicAge(m.getMetabolicAge());   
+    if (metabolic_age_required)        measurement.setMetabolicAge(m.getMetabolicAge());
+    if (bmi_required)                  measurement.setBMI(m.getBMI());
   }
   
   private void loadFields() {
@@ -211,6 +216,7 @@ public class EditMeasurementActivity extends AppCompatActivity {
     if (measurement.getBoneMass() != null)           ((EditText)findViewById(R.id.bone_mass)).setText(measurement.getConvertedBoneMass().toString());
     if (measurement.getMetabolicAge() != null)       ((EditText)findViewById(R.id.metabolic_age)).setText(measurement.getMetabolicAge().toString());
     ((CheckBox)findViewById(R.id.exported)).setChecked(measurement.isExported());
+    if (measurement.getBMI() != null)                ((EditText)findViewById(R.id.bmi)).setText(measurement.getBMI().toString());
   }
   
   private boolean unloadFields() {
@@ -225,6 +231,7 @@ public class EditMeasurementActivity extends AppCompatActivity {
       if (bone_mass_required)            measurement.setConvertedBoneMass(Float.parseFloat(((EditText)findViewById(R.id.bone_mass)).getText().toString()));
       if (metabolic_age_required)        measurement.setMetabolicAge(Short.parseShort(((EditText)findViewById(R.id.metabolic_age)).getText().toString()));
       measurement.setExported(((CheckBox)findViewById(R.id.exported)).isChecked());
+      if (bmi_required)                  measurement.setBMI(Float.parseFloat(((EditText)findViewById(R.id.bmi)).getText().toString()));
       return true;
     } catch (Exception e) {
       return false;

@@ -139,4 +139,8 @@
   <string name="pref_test_data_loaded">Тестові дані завантажено</string>
   <string name="pref_misc_category">Різне</string>
   <string name="pref_about">Про програму</string>
+    <string name="bmi_underweight">Худорлявий</string>
+  <string name="bmi_overweight">Повний</string>
+  <string name="bmi_normal">Норма</string>
+  <string name="bmi_obese">Ожиріння</string>
 </resources>

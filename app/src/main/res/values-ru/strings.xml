@@ -139,4 +139,8 @@
   <string name="pref_test_data_loaded">Тестовые данные были загружены</string>
   <string name="pref_misc_category">Разное</string>
   <string name="pref_about">О программе</string>
+    <string name="bmi_underweight">Худой</string>
+  <string name="bmi_overweight">Полный</string>
+  <string name="bmi_normal">Норма</string>
+  <string name="bmi_obese">Ожирение</string>
 </resources>

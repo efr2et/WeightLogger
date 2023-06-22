@@ -18,7 +18,13 @@
 	       <TextView android:text="@string/weight" style="@style/EditTableRowText" />
 	       <EditText android:id="@+id/weight" android:inputType="numberDecimal" style="@style/EditTableRowEditText" />
 	     </TableRow>
-	     
+
+		 <TableRow android:id="@+id/bmi_row" style="@style/EditTableRow">
+			  <ImageView android:src="@drawable/ic_bmi" />
+			  <TextView android:text="@string/bmi" style="@style/EditTableRowText" />
+			  <EditText android:id="@+id/bmi" android:inputType="numberDecimal" style="@style/EditTableRowEditText" />
+		 </TableRow>
+
 	     <TableRow android:id="@+id/body_fat_row" style="@style/EditTableRow">
 	       <ImageView android:src="@drawable/ic_body_fat" />
 	       <TextView android:text="@string/body_fat" style="@style/EditTableRowText" />

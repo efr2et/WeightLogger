@@ -78,6 +78,9 @@ public class MeasurementsShowAdapter extends BaseAdapter {
     TextView     tv_recorded_at;
     TextView     tv_recorded_at_time;
     TextView     tv_weight;
+    TextView     tv_bmi;
+    TextView     tv_bmi_info;
+    LinearLayout ll_bmi;
     TextView     tv_body_fat;
     TextView     tv_body_fat_info;
     LinearLayout ll_body_fat;
@@ -110,6 +113,9 @@ public class MeasurementsShowAdapter extends BaseAdapter {
       holder.tv_recorded_at              = (TextView)convertView.findViewById(R.id.recorded_at);
       holder.tv_recorded_at_time         = (TextView)convertView.findViewById(R.id.recorded_at_time);
       holder.tv_weight                   = (TextView)convertView.findViewById(R.id.weight);
+      holder.tv_bmi                      = (TextView)convertView.findViewById(R.id.bmi);
+      holder.tv_bmi_info                 = (TextView)convertView.findViewById(R.id.bmi_info);
+      holder.ll_bmi                      = (LinearLayout)convertView.findViewById(R.id.bmi_layout);
       holder.tv_body_fat                 = (TextView)convertView.findViewById(R.id.body_fat);
       holder.tv_body_fat_info            = (TextView)convertView.findViewById(R.id.body_fat_info);
       holder.ll_body_fat                 = (LinearLayout)convertView.findViewById(R.id.body_fat_layout);
@@ -140,7 +146,15 @@ public class MeasurementsShowAdapter extends BaseAdapter {
     holder.tv_recorded_at.setText(measurement.getFormatedRecordedAt());
     holder.tv_recorded_at_time.setText(measurement.getFormatedRecordedAtTime());
     holder.tv_weight.setText(measurement.getFormatedWeight());
-    
+
+    if (measurement.getBMI() == null)
+      holder.ll_bmi.setVisibility(View.GONE);
+    else {
+      holder.ll_bmi.setVisibility(View.VISIBLE);
+      holder.tv_bmi.setText(measurement.getBMI().toString());
+      holder.tv_bmi_info.setText(measurement.getBMIInfo());
+    }
+
     if (measurement.getBodyFat() == null)
       holder.ll_body_fat.setVisibility(View.GONE);
     else {

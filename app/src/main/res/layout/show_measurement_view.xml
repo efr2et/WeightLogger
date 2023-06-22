@@ -9,9 +9,18 @@
   <TableLayout style="@style/MatchMatch" android:layout_marginTop="20dip" android:stretchColumns="*">
      
 		<TableRow style="@style/ShowTableRow">
-		  <LinearLayout android:id="@+id/weight_layout" style="@style/ShowTableCell">  
+		  <LinearLayout android:id="@+id/weight_layout" style="@style/ShowTableCell">
 		    <ImageView android:src="@drawable/ic_weight" style="@style/ShowIcon" />
-		    <TextView android:id="@+id/weight" android:text="@string/weight" style="@style/ShowText" />
+			<LinearLayout style="@style/WrapWrap" android:orientation="vertical">
+			  <TextView android:id="@+id/weight" android:text="@string/weight" style="@style/ShowText" />
+			</LinearLayout>
+		  </LinearLayout>
+			<LinearLayout android:id="@+id/bmi_layout" style="@style/ShowTableCell">
+			<ImageView android:src="@drawable/ic_bmi" style="@style/ShowIcon" />
+			  <LinearLayout style="@style/WrapWrap" android:orientation="vertical">
+				<TextView android:id="@+id/bmi" android:text="@string/bmi" style="@style/ShowText" />
+				<TextView android:id="@+id/bmi_info" android:text="normal" style="@style/ShowTextInfo" />
+			  </LinearLayout>
 		  </LinearLayout>
 		</TableRow>
 		
